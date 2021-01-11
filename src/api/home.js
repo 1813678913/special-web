@@ -7,5 +7,6 @@ export function home(params) {
         url: "/home",
         params
     });
+
     
 }
