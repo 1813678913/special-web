@@ -14,7 +14,7 @@
 <style lang="scss" scoped>
 #main_wrap {
   position: fixed;
-  top: 65px;
+  top: 0;
   right: 0;
   bottom: 0;
   background: #f7f5f5;

@@ -13,7 +13,7 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: "/",
-        redirect: "login",
+        redirect: "home",
         hidden: true,
         meta: {
             name: "主页"
