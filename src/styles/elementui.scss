@@ -1,0 +1,225 @@
+// 展开的侧边栏宽度
+$menuOpenWidth:0px;
+// 关闭的侧边栏宽度
+$menuCloseWidth:0px;
+
+// -----------------默认主题颜色--------------------
+// 菜单主体背景颜色
+$menuBackground:#1a263a;
+// 激活一级菜单颜色
+$menuActiveFather:#193675;
+// hover的二级菜单文字颜色
+$menuActiveChild_hover:#ffffff;
+// 激活的二级菜单文字颜色
+$menuActiveChild_text:#ffffff;
+// 激活的二级菜单背景颜色
+$menuActiveChild_background:#1936758c;
+// 头部文字颜色
+$header_text:#FFFFFF;
+
+
+// -----------------主题1颜色--------------------
+// 菜单主体背景颜色
+$menuBackground_First:rgb(46, 51, 61);
+// 激活一级菜单颜色
+$menuActiveFather_First:rgb(93, 107, 136);
+// hover的二级菜单文字颜色
+$menuActiveChild_hover_First:rgb(255, 255, 255);
+// 激活的二级菜单文字颜色
+$menuActiveChild_text_First:rgb(255, 255, 255);
+// 激活的二级菜单背景颜色
+$menuActiveChild_background_First:rgba(93, 107, 136, .5);
+// 头部文字颜色
+$header_text_First:#FFFFFF;
+
+// -----------------主题2颜色--------------------
+// 菜单主体背景颜色
+$menuBackground_Second:rgb(250, 118, 149);
+// 激活一级菜单颜色
+$menuActiveFather_Second:rgb(252, 33, 84);
+// hover的二级菜单文字颜色
+$menuActiveChild_hover_Second:rgb(250, 118, 149);
+// 激活的二级菜单文字颜色
+$menuActiveChild_text_Second:rgb(252, 33, 84);
+// 激活的二级菜单背景颜色
+$menuActiveChild_background_Second:#FFFFFF;
+// 头部文字颜色
+$header_text_Second:#FFFFFF;
+
+
+// 菜单主体背景颜色
+@mixin theme() {
+
+    /*通过该函数设置主题颜色，后期方便统一管理；*/
+    [theme='Zeroth'] & {
+        background: $menuBackground;
+    }
+
+    [theme='First'] & {
+        background: $menuBackground_First;
+    }
+
+    [theme="Second"] & {
+        background-color: $menuBackground_Second;
+    }
+}
+
+// 激活一级菜单颜色
+@mixin menu_Act_Fat() {
+
+    /*通过该函数设置主题颜色，后期方便统一管理；*/
+    [theme='Zeroth'] & {
+        background: $menuActiveFather;
+    }
+
+    [theme='First'] & {
+        background: $menuActiveFather_First;
+    }
+
+    [theme="Second"] & {
+        background-color: $menuActiveFather_Second;
+    }
+}
+
+//  hover的二级菜单文字颜色
+@mixin menu_act_child_hover() {
+
+    /*通过该函数设置主题颜色，后期方便统一管理；*/
+    [theme='Zeroth'] & {
+        color: $menuActiveChild_hover !important;
+    }
+
+    [theme='First'] & {
+        color: $menuActiveChild_hover_First !important;
+    }
+
+    [theme="Second"] & {
+        color: $menuActiveChild_hover_Second !important;
+    }
+}
+
+// 激活二级菜单文字颜色
+@mixin menu_act_child_text() {
+
+    /*通过该函数设置主题颜色，后期方便统一管理；*/
+    [theme='Zeroth'] & {
+        color: $menuActiveChild_text !important;
+    }
+
+    [theme='First'] & {
+        color: $menuActiveChild_text_First !important;
+    }
+
+    [theme="Second"] & {
+        color: $menuActiveChild_text_Second !important;
+    }
+}
+
+// 激活的二级菜单文字颜色
+@mixin menu_act_child_bg() {
+
+    /*通过该函数设置主题颜色，后期方便统一管理；*/
+    [theme='Zeroth'] & {
+        background: $menuActiveChild_background !important;
+    }
+
+    [theme='First'] & {
+        background: $menuActiveChild_background_First !important;
+    }
+
+    [theme="Second"] & {
+        background: $menuActiveChild_background_Second !important;
+    }
+}
+
+// 头部样式
+@mixin header_text() {
+    [theme='Zeroth'] & {
+        color: $header_text !important;
+    }
+
+    [theme='First'] & {
+        color: $header_text_First !important;
+    }
+
+    [theme="Second"] & {
+        color: $header_text_Second !important;
+    }
+}
+
+// 兼容
+@mixin webkit($type, $value) {
+    -webkit-#{$type}: $value;
+    -moz-#{$type}: $value;
+    -o-#{$type}: $value;
+    -ms-#{$type}: $value;
+    #{$type}: $value;
+}
+
+// 整个菜单
+.el-menu {
+    border-right: none;
+    @include theme();
+}
+
+// 一级菜单
+li.el-submenu {
+
+    // 一级菜单标题
+    .el-submenu__title {
+        padding: 0 10px !important;
+        height: 50px !important;
+        font-size: 15px;
+        @include theme();
+    }
+
+    // 一级菜单标题被激活
+    &.is-active.is-opened .el-submenu__title {
+        @include menu_Act_Fat()
+    }
+
+}
+
+// 侧边一级菜单被激活
+.el-submenu.is-active .el-submenu__title {
+    @include menu_Act_Fat()
+}
+
+// 二级菜单
+.el-submenu .el-menu-item {
+    font-size: 15px;
+    padding-left: 40px !important;
+    height: 45px;
+    line-height: 45px;
+    @include theme(); // 二级菜单背景颜色
+
+    &:hover {
+        @include menu_act_child_hover();
+        @include menu_act_child_bg();
+    }
+
+    &.is-active {
+        @include menu_act_child_text();
+        @include menu_act_child_bg();
+    }
+}
+
+// 侧边菜单激活的时候
+.el-menu-item.is-active {
+    @include menu_act_child_bg();
+}
+
+.el-menu-item:focus,
+.el-menu-item:hover {
+    @include menu_act_child_bg();
+
+    &.is-active {
+        @include menu_act_child_bg();
+    }
+
+}
+
+// el-scrollbar 全局下拉颜色
+.el-scrollbar__thumb {
+    background-color: transparent;
+}
