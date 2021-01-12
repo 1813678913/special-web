@@ -4,7 +4,7 @@ import service from "@/untils/request";
 export function home(params) {
     return service.request({
         method: "get",
-        url: "",
+        url: "/home",
         params
     });
 

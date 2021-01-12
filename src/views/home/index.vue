@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="box_div">
       <div class="head_img_box">
-        <img src="@/assets/user.jpg" alt />
+        <img src="@/assets/use.jpg" alt />
       </div>
       <div class="header_down">
         <el-dropdown trigger="click" @command="handleCommand">
@@ -71,8 +71,8 @@ export default {
 
 <style lang="scss" scoped>
 .biaoyu {
-  font-size: 22px;
-  font-family: "楷体";
+  font-size: 23px;
+  font-family: '楷体';
   color: rgb(10, 34, 247);
   margin: 0 auto;
   width: 100%;
@@ -93,7 +93,7 @@ export default {
 }
 .box_div {
   display: flex;
-  width: 80px;
+  width: 85px;
   float: right;
 }
 .head_img_box {
@@ -126,7 +126,7 @@ export default {
     @include header_text();
 
     &:hover {
-      color: #409eff !important;
+      color: #f9fbfc !important;
     }
   }
 }
