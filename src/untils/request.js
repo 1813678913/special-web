@@ -8,7 +8,7 @@ const BASEURL = process.env.NODE_ENV === "production" ? "/api" : "/devApi";
 const service = axios.create({
   baseURL: BASEURL,
   timeout: 10000,
-  headers: { "X-Custom-Header": "foobar" }
+  headers: { "X-Custom-Header": "foobar"}
 });
 
 // 添加请求拦截器
@@ -17,7 +17,6 @@ service.interceptors.request.use(
     // 在发送请求之前做些什么
     // 后端需要前端传的一些相关参数(在请求头添加参数)
     config.headers['Tokey'] = getToken()
-    config.headers['UserName'] = getUserName()
     console.log(config,'来自请求拦截的config');
     return config;
   },

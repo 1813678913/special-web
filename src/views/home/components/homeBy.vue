@@ -1,6 +1,6 @@
 <template>
   <div class="homeBox">
-      <p id="by">{{pp}}</p>
+      <p id="by">{{biaoyu}}</p>
   </div>
 </template>
 
@@ -10,17 +10,17 @@ export default {
   name: "homeBy",
   data() {
     return {
-        pp:''
+        biaoyu:''
     };
   },
   created(){
-      this.aaa()
+      this.speak()
   },
   methods: {
-    aaa() {
+    speak() {
       home().then((res) => {
           console.log(res.data.message)
-          this.pp=res.data.message;
+          this.biaoyu=res.data.message;
       });
     },
   },
@@ -28,11 +28,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-#by{
-   font-size: 26px;
-
-}
-
 
 </style>

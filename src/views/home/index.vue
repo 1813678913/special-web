@@ -11,8 +11,11 @@
             <i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-user-solid" command="user"
-              >个人中心</el-dropdown-item
+            <el-dropdown-item
+              icon="el-icon-user-solid"
+              v-if="userName != null "
+              command="user"
+              >登录/注册</el-dropdown-item
             >
             <el-dropdown-item icon="el-icon-s-promotion" command="loginOut"
               >退出登录</el-dropdown-item
@@ -23,9 +26,7 @@
     </div>
 
     <div class="biaoyu">
-      
-        <HomeBy></HomeBy>
-      
+      <HomeBy></HomeBy>
     </div>
   </div>
 </template>
@@ -56,17 +57,22 @@ export default {
           });
         });
       }
+      if (command == "user") {
+        this.$store.dispatch("loginModule/loginOut").then(() => {
+          this.$router.push({
+            path: "/login",
+          });
+        });
+      }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 .biaoyu {
   font-size: 22px;
-  font-family: '楷体';
+  font-family: "楷体";
   color: rgb(10, 34, 247);
   margin: 0 auto;
   width: 100%;
@@ -91,7 +97,7 @@ export default {
   float: right;
 }
 .head_img_box {
-  width: 40px;
+  width: 50px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #ffffff;
@@ -109,7 +115,7 @@ export default {
   /deep/.el-icon-caret-bottom:before {
     color: rgb(8, 234, 241);
   }
-  margin-top: 8px;
+  margin-top: 3px;
 }
 .el-dropdown-link {
   font-weight: 600;

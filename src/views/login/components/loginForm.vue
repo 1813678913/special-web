@@ -96,6 +96,7 @@ import {
   validateCode,
   validatePasswords,
 } from "./checkForm";
+import {setUserName} from "../../../untils/systemStorage";
 import { userLogin,userRegister} from "@/api/login";
 
 
@@ -148,7 +149,7 @@ export default {
       },
       codeBtnStatus: false, // 获取验证码是否隐藏
       codeBtnVal: "获取验证码", // 获取验证码中文字段
-      myInfo: null,
+      myInfo: 0,
       timer: null, //定时器名称
     };
   },
@@ -179,6 +180,7 @@ export default {
       if (this.model === 'login') {
         userLogin(this.ruleForm).then((res) => {
           if (200 === res.data.code) {
+            setUserName(res.data.data.name),
             this.$router.push({
               path: "/home",
             });
