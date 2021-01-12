@@ -13,7 +13,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               icon="el-icon-user-solid"
-              v-if="userName != null "
+              v-if="userName == null "
               command="user"
               >登录/注册</el-dropdown-item
             >
