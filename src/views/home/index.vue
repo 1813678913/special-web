@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="box_div">
-      <div class="head_img_box">
+      <div class="head_img_box" v-if="userName != null">
         <img src="@/assets/use.jpg" alt />
       </div>
       <div class="header_down">
@@ -115,7 +115,7 @@ export default {
 }
 .box_div {
   display: flex;
-  width: 146px;
+  width: 120px;
   float: right;
 }
 .head_img_box {
