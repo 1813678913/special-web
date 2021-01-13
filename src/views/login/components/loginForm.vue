@@ -83,7 +83,7 @@
           type="primary"
           @click="submitForm('ruleForm')"
           class="login-btn block"
-          >{{ model == "login" ? "登陆" : "注册" }}</el-button
+          >{{ model == "login" ? "登录" : "注册" }}</el-button
         >
       </el-form-item>
     </el-form>
@@ -239,13 +239,12 @@ export default {
 
   .menu-tab {
     text-align: center;
-
     li {
       display: inline-block;
       width: 40px;
       line-height: 20px;
       font-size: 14px;
-      color: #333333;
+      color: #03b0f5;
       cursor: pointer;
       font-weight: 600;
       border-radius: 5px;

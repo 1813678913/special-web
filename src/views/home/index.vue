@@ -10,10 +10,17 @@
             <a href="javascript:void(0)">{{ userName }}</a>
             <i class="el-icon-caret-bottom"></i>
           </span>
+          <el-button
+            type="primary"
+            @click="goLogin"
+            class="dl"
+            v-if="userName == null"
+            >登录</el-button
+          >
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
               icon="el-icon-user-solid"
-              v-if="userName == null "
+              v-if="userName == null"
               command="user"
               >登录/注册</el-dropdown-item
             >
@@ -48,6 +55,14 @@ export default {
     };
   },
   methods: {
+    goLogin() {
+       this.$store.dispatch("loginModule/loginOut").then(() => {
+      this.$router.push({
+        path: "/login",
+      });
+      });
+    },
+
     handleCommand(command) {
       console.log(command);
       if (command == "loginOut") {
@@ -70,9 +85,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.dl {
+  width: 65px;
+  height: 40px;
+  margin-right: 2px;
+  margin-top: 5px;
+}
+
 .biaoyu {
   font-size: 23px;
-  font-family: '楷体';
+  font-family: "楷体";
   color: rgb(10, 34, 247);
   margin: 0 auto;
   width: 100%;
@@ -93,7 +115,7 @@ export default {
 }
 .box_div {
   display: flex;
-  width: 85px;
+  width: 146px;
   float: right;
 }
 .head_img_box {
