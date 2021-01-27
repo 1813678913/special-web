@@ -7,6 +7,14 @@ export function home(params) {
         url: "/home",
         params
     });
+}
 
-    
+export function goDownLoad(params) {
+    return service.request({
+        method: "get",
+        url: "/download",
+        params
+    });
+
+
 }

@@ -72,7 +72,7 @@ module.exports = {
     // 设置代理
     proxy: {
       "/devApi": {
-        target: "http://192.168.100.32:8080", //API服务器的地址
+        target: "http://192.168.101.9:8080", //API服务器的地址
         changeOrigin: true,
         pathRewrite: {
           "^/devApi": ""
