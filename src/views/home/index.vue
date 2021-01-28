@@ -32,33 +32,6 @@
       </div>
     </div>
 
-    <el-form
-      :model="downloads"
-      status-icon
-      :rules="rules"
-      ref="downloads"
-      class="download-form"
-      size="medium"
-    >
-      <el-form-item prop="urls" class="item-from">
-        <label>下载地址</label>
-        <el-input
-          type="text"
-          v-model="downloads.urls"
-          autocomplete="off"
-        ></el-input>
-      </el-form-item>
-
-      <el-form-item prop="paths" class="item-from">
-        <label>存放路径</label>
-        <el-input type="text" v-model="downloads.paths" autocomplete="off">
-        </el-input>
-      </el-form-item>
-      <el-button type="primary" @click="down('downloads')" class="xiazai"
-        >下载</el-button
-      >
-    </el-form>
-
     <div class="biaoyu">
       <HomeBy></HomeBy>
     </div>
@@ -69,7 +42,7 @@
 import HomeBy from "./components/homeBy";
 import AX from "../../Layout/components/Header";
 import { getUserName } from "@/untils/systemStorage";
-import { home,goDownLoad } from "@/api/home";
+import { home } from "@/api/home";
 
 export default {
   components: {
@@ -80,10 +53,6 @@ export default {
     return {
       tableData: [],
       userName: getUserName(), // 用户名
-      downloads: {
-        urls: "",
-        paths: "",
-      },
     };
   },
   methods: {
@@ -94,13 +63,6 @@ export default {
         });
       });
     },
-    down() {
-      goDownLoad(this.downloads).then((res) => {
-        console.log(res.data.message);
-        alert(res.data.message);
-      });
-    },
-
     handleCommand(command) {
       console.log(command);
       if (command == "loginOut") {
@@ -135,20 +97,6 @@ export default {
   height: 40px;
   margin-right: 2px;
   margin-top: 5px;
-}
-
-.download-form {
-  width: 150px;
-  label {
-    display: block;
-    margin-bottom: 3px;
-    font-size: 14px;
-    color: #0307fc;
-    font-weight: 600;
-  }
-}
-.item-from {
-  margin-bottom: 13px;
 }
 
 .biaoyu {

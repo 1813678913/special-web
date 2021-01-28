@@ -8,13 +8,3 @@ export function home(params) {
         params
     });
 }
-
-export function goDownLoad(params) {
-    return service.request({
-        method: "get",
-        url: "/download",
-        params
-    });
-
-
-}
